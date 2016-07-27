@@ -1,0 +1,233 @@
+/* colors */
+@color-0: #FAD089;
+@color-1: #FF9C5B;
+@color-2: #F5634A;
+@color-3: #ED303C;
+@color-4: #3B8183;
+@white: #fff;
+@clouds: #fff;
+@asbestos: #F2F1EF;
+@black: #000;
+
+/* constants */
+@tag-height: 60px;
+@tag-font-size: 1.2em;
+@text-font-size: 1em;
+@text-line-height: 1.18em;
+@tag-side-padding: 20px;
+@border-size:4px;
+@half-border-size: @border-size / 2;
+
+@new-note-padding: 60px;
+
+@submit-note-height: 60px;
+@submit-note-width: 100%;
+
+@tags-full-height: @tag-height + @new-note-padding*2 + @border-size + @half-border-size;
+@submit-note-full-height: @submit-note-height + @border-size;
+@tag-header-full-height: @tag-height + @border-size;
+
+/* THE WHOLE PAGE */
+html, body, div.container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    background: @white;
+    color: @black;
+    overflow: hidden;
+}
+
+div.half {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+    height: 100%;
+    width:50%;
+    float: left;
+
+    &.left {
+        border-right:@half-border-size solid @black;
+    }
+
+    &.right {
+        border-left: @half-border-size solid @black;
+    }
+}
+
+/* THE LEFT SIDE */
+/* the current tag */
+div.tag-header-container {
+    height: @tag-height;
+    width: 100%;
+    text-align: center;
+    border-bottom: @border-size solid @black;
+}
+
+span.tag-header {
+    height: @tag-height;
+    line-height: @tag-height;
+    font-size: @tag-font-size;
+}
+
+div.note-card-container {
+    /* Firefox */
+    height: -moz-calc(~"100% - "@tag-header-full-height);
+    height: -webkit-calc(~"100% - "@tag-header-full-height);
+    /* Opera */
+    height: -o-calc(~"100% - "@tag-header-full-height);
+    /* Standard */
+    height: calc(~"100% - "@tag-header-full-height);
+    overflow-y:scroll;
+}
+div.note-card {
+    border-bottom: @half-border-size solid black;
+    text-align: center;
+    padding: @tag-height / 2;
+}
+
+
+/* THE RIGHT SIDE */
+/* the tags */
+ul.tags {
+    // overflow:hidden;
+    // overflow-x:scroll;
+    overflow:auto;
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+    height: @tag-height;
+    border-bottom: @border-size solid black;
+
+    ::-webkit-scrollbar { 
+        display: none; 
+    }
+}
+
+li.tag {
+    display: inline-block;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+
+    border-top: @half-border-size solid transparent;
+
+    &:hover {
+        cursor: pointer;
+        // margin: -@half-border-size;
+        border-top: @half-border-size solid @black;
+    }
+
+    &.selected {
+        border-top: @half-border-size solid @black;
+    }
+
+    // :active {
+    //     margin: -@border-size;
+    //     border-top: @border-size solid @black;
+    // }
+
+    // &.selected {
+    //     margin: -@half-border-size;
+    //     border: @half-border-size solid @black;
+    // }
+    &.new-tag {
+        // if you can figure out how to remove this, do that
+        margin-left: -5px;
+    }
+}
+
+span.tag-title {
+    padding-left: @tag-side-padding;
+    padding-right: @tag-side-padding;
+    display: block;
+    text-align: center;
+    height: @tag-height;
+    line-height: @tag-height;
+    font-size: @tag-font-size;
+}
+
+input.new-tag {
+    padding-top:0;
+    padding-bottom:0;
+    padding-left: @tag-side-padding;
+    padding-right: @tag-side-padding;
+    text-align: center;
+    height: @tag-height;
+    line-height: @tag-height;
+    font-size: @tag-font-size;
+    outline: none;
+    border: none;
+    margin: 0;
+
+    &:hover {
+        cursor: text;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+
+textarea.new-note {
+    color: @black;
+    font-size: @text-font-size;
+    line-height: @text-line-height;
+    padding: @new-note-padding;
+    /* Firefox */
+    width: -moz-calc(~"100% - "(@new-note-padding*2));
+    /* WebKit */
+    width: -webkit-calc(~"100% - "(@new-note-padding*2));
+    /* Opera */
+    width: -o-calc(~"100% - "(@new-note-padding*2));
+    /* Standard */
+    width: calc(~"100% - "(@new-note-padding*2));
+    /* Firefox */
+    height: -moz-calc(~"100% - "@tags-full-height + @submit-note-full-height);
+    /* WebKit */
+    height: -webkit-calc(~"100% - "@tags-full-height + @submit-note-full-height);
+    /* Opera */
+    height: -o-calc(~"100% - "@tags-full-height + @submit-note-full-height);
+    /* Standard */
+    height: calc(~"100% - "@tags-full-height + @submit-note-full-height);
+    
+    resize: none;
+
+    border: none;
+    overflow:hidden;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+div.submit-note {
+    height:@submit-note-height;
+    width: @submit-note-width;
+    border-top: @half-border-size solid @black;
+    position:absolute;
+    width:50%;
+    bottom:0;
+    text-align: center;
+    line-height: @tag-height;
+    font-size: @tag-font-size;
+
+    &.enabled:hover {
+        background: @black;
+        color: @white;
+        cursor: pointer;
+    }
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+
+

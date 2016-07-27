@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="notes">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Text Entry with Tags Enforced</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script><!-- load angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-cookies.js"></script>
+    <script src="core.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+    <div class="container">
+        <div class="half left">
+            <div class="tag-header-container">
+                <span class="tag-header">{{currentTag}}</span>
+            </div>
+            <div class="note-card-container">
+                <div class="note-card" ng-repeat="note in tagsToNotes[currentTag] track by $index">{{note}}</div>
+            </div>
+        </div>
+        <div class="half right">
+            <ul class ="tags">
+                <li class="tag" ng-class="{'selected': tag==currentTag && !newTagFocus}" ng-repeat="tag in tags" ng-click="setCurrentTag($index)">
+                    <span class="tag-title">{{tag}}</span>
+                </li>
+                <li class="tag new-tag" ng-class="{'selected': newTagFocus}" ng-click="newTag()">
+                    <form ng-submit="submitTag($event)"><input type="text" ng-model="currentNewTag" size="{{currentNewTagInputSize()}}" class="new-tag tag-title" placeholder="{{newTagPlaceholder}}" ng-focus="newTagFocus=true" ng-blur="newTagFocus=false" ng-trim="false"></form>
+                </li>
+            </ul>
+            <textarea class="new-note" placeholder="{{textareaPlaceholder}}" ng-model="currentNote"></textarea>
+            <div class="submit-note" ng-class="{'enabled': submitNoteEnabled}" ng-click="submitNote()">{{submitNoteText}}</div>
+        </div>
+    </div>
+
+</body>
+</html>

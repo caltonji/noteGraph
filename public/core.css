@@ -1,0 +1,76 @@
+
+
+/*
+Note: Leaving this here for now to pull some ui things from it
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+div.container {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+div.thoughts {
+    overflow-y:scroll;
+    width:100%;
+    height:calc(100% - 50px);
+    padding:25px;
+    display:table-cell;
+    vertical-align: bottom;
+}
+
+div.card {
+    background:#fff;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 300px;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #D4D4D5,0 0 0 1px #D4D4D5;
+    bottom:0;
+}
+
+div.row {
+    width:100%;
+}
+
+div.content {
+    padding:15px;
+}
+
+div.chain {
+    margin-left:auto;
+    margin-right:auto;
+    z-index:-2;
+    width: 15px;
+    height: 60px;
+    box-shadow: 1px 0 2px -1px #D4D4D5, -1px 0 2px -1px #D4D4D5;
+}
+
+div.newThought {
+    display:block;
+    height:200px;
+}
+
+div.plainTextArea {
+    padding:15px;
+    width:calc(100% - 30px);
+    border: 0 none white;
+    overflow: hidden;
+    outline: none;
+    min-height:3em;
+}
+
+div.plainTextArea:hover {
+    cursor: text !important;
+}
+
+[contenteditable]:empty:not(:focus):before{
+  content:attr(placeholder);
+  color: #D4D4D5;
+}*/
